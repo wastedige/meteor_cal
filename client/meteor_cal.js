@@ -17,6 +17,14 @@ if (Meteor.isServer) {
   });
 }
 
+// runs when page has been rendered
+Template.calendar.rendered = function(){
+  $('#calendar').fullCalendar({
+    // http://fullcalendar.io/docs/usage/
+
+  });
+}
+
 Router.route('/', function () {
   this.render('home');
 });
