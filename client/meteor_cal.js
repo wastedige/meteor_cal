@@ -21,7 +21,11 @@ if (Meteor.isServer) {
 Template.calendar.rendered = function(){
   $('#calendar').fullCalendar({
     // http://fullcalendar.io/docs/usage/
-
+    events: [
+         {
+             title  : 'event1',
+             start  : '2015-05-01'
+         }]
   });
 }
 
