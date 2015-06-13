@@ -1,26 +1,26 @@
 <head>
-  <title>meteor_cal</title>
+    <title>meteor_cal</title>
 </head>
 
 <body>
-  {{>menu}}
-  <div class="container">
+{{>menu}}
+<div class="container">
     <!-- used by router to render requested page -->
     {{renderPage}}
-  </div>
+</div>
 
 </body>
 
 <template name="menu">
-  <div class="navbar navbar-static-top" role="navigation">
-    <div class="navbar-inner">
-      <a class="brand" href="#">Mah Calendarrr</a>
-      <ul class="nav">
-        <li><a href="\">Home</a></li>
-        <li><a href="\calendar">Cal</a></li>
-      </ul>
+    <div class="navbar navbar-static-top" role="navigation">
+        <div class="navbar-inner">
+            <a class="brand" href="#">Mah Calendarrr</a>
+            <ul class="nav">
+                <li><a href="\">Home</a></li>
+                <li><a href="\calendar">Cal</a></li>
+            </ul>
+        </div>
     </div>
-  </div>
 </template>
 
 <template name="home">
@@ -30,6 +30,7 @@
 </template>
 
 <template name="calendar">
+
     <div id="calendar">
 
     </div>
