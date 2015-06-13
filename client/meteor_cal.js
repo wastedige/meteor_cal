@@ -5,6 +5,7 @@ CalEvents = new Mongo.Collection("z3");
 
 
 if (Meteor.isClient) {
+    Meteor.subscribe('calCollection');
     Session.setDefault("event2edit", null);
     Session.setDefault("showEditWindow", false);
     Session.setDefault("lastMod", null);
@@ -29,7 +30,7 @@ if (Meteor.isClient) {
                 //Meteor.call('saveCalEvent', calendarEvent );
                 CalEvents.insert(calendarEvent);
                 updateCalendar();
-                alert(CalEvents.find().count())
+                //alert(CalEvents.find().count())
             },
             eventClick: function (calEvent, jsEvent, view) {
 
