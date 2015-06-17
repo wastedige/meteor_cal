@@ -10,3 +10,5 @@ bootstrap
 jquery
 iron:router
 mrt:fullcalendar
+accounts-ui
+accounts-password
