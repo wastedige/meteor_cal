@@ -31,7 +31,7 @@ if (Meteor.isClient) {
 
         var title = template.find("#title").value;
         //alert(title);
-        Meteor.call('updateCalendar', Session.get('editing_event'), title);
+        Meteor.call('updateTitle', Session.get('editing_event'), title);
         Session.set('editing_event', null);
       }
     });
@@ -55,11 +55,16 @@ if (Meteor.isClient) {
             eventClick: function (calEvent, jsEvent, view) {
                 Session.set('editing_event', calEvent._id);
             },
+            eventDrop: function(event) {
+                Meteor.call('updateDate', event._id, event.start);
+            },
             events: function (start, end, callback) {
                 calEvents = CalEvents.find().fetch();
                 callback(calEvents);
 
-            }
+            },
+            editable: true,
+            selectable: true
         }).data().fullCalendar;
 
         Deps.autorun(function(){
