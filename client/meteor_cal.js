@@ -1,6 +1,6 @@
 //Session only works on the client
 
-CalEvents = new Mongo.Collection("z3");
+//CalEvents = new Mongo.Collection("z3");
 // to be used later to handle editing
 
 
@@ -26,6 +26,13 @@ if (Meteor.isClient) {
     Template.dialog.events({
       'click .closeDialog': function(event, template){
         Session.set('editing_event', null);
+      },
+      'click .saveDialog': function(event, template){
+
+        var title = template.find("#title").value;
+        //alert(title);
+        Meteor.call('updateCalendar', Session.get('editing_event'), title);
+        Session.set('editing_event', null);
       }
     });
 
@@ -40,8 +47,8 @@ if (Meteor.isClient) {
                 calendarEvent.end = date;
                 calendarEvent.title = "New !";
                 calendarEvent.owner = Meteor.userId(); //does it work?
-                //Meteor.call('saveCalEvent', calendarEvent );
-                CalEvents.insert(calendarEvent);
+                Meteor.call('saveCalEvent', calendarEvent );
+                //CalEvents.insert(calendarEvent);
                 //updateCalendar();
                 //alert(CalEvents.find().count())
             },
@@ -69,15 +76,3 @@ if (Meteor.isClient) {
 //var updateCalendar = function(){
 //	$('#calendar').fullCalendar( 'refetchEvents' );
 //}
-
-if (Meteor.isServer) {
-
-    Meteor.startup(function () {
-        Meteor.methods({
-            'saveCalEvent': function(ce){
-                CalEvents.insert(ce);
-
-            }
-        })
-    });
-}
