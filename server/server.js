@@ -15,6 +15,10 @@ if (Meteor.isServer) {
                   start: date,
                   end: date,
                 }});
+            },
+            'deleteEvent': function(id) {
+                return CalEvents.remove({_id:id});
+
             }
         })
     });

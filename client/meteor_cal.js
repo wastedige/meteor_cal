@@ -33,6 +33,10 @@ if (Meteor.isClient) {
         //alert(title);
         Meteor.call('updateTitle', Session.get('editing_event'), title);
         Session.set('editing_event', null);
+      },
+      'click .deleteDialog': function(event, template){
+        Meteor.call('deleteEvent', Session.get('editing_event'));
+        Session.set('editing_event', null);
       }
     });
 
